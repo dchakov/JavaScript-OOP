@@ -1,5 +1,6 @@
 *.pgd
 *.pgc
+*.sln
 ## Ignore Visual Studio temporary files, build results, and
 /01.FunctionsDeclaration/Properties
 bld/
