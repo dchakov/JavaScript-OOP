@@ -37,3 +37,5 @@ function findPrimes(from, to) {
 }
 
 module.exports = findPrimes;
+
+console.log(findPrimes(1,10));

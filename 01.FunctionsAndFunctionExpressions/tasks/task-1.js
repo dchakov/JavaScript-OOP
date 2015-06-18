@@ -24,3 +24,6 @@ function sum(numbers) {
 }
 
 module.exports = sum;
+
+console.log(sum([1,2,3,4]));
+console.log(sum([]));
