@@ -6,20 +6,20 @@
 		3) it must throw an Error if any of the range params is missing
 */
 
-function findPrimes(from, to) {
+function findPrimes(start, to) {
     var devisor,
         maxDevisor,
         i,
         isPrime,
         primes = [];
-        from = +from;
+        start = +start;
         to = +to;
 
-        if (isNaN(from) || isNaN(to)) {
+        if (isNaN(start) || isNaN(to)) {
     		throw new Error();
     	}
 
-    for (i = from; i <= to; i += 1) {
+    for (i = start; i <= to; i += 1) {
 
         maxDevisor = Math.sqrt(i);
         isPrime = true;
