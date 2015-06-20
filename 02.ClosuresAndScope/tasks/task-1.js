@@ -21,33 +21,80 @@
 			*	If something is not valid - throw Error
 */
 function solve() {
-	var library = (function () {
-		var books = [];
-		var categories = [];
-		function listBooks() {
-			return books;
-		}
+    var library = (function() {
+        var books = [];
+        var categories = [];
 
-		function addBook(book) {
-			book.ID = books.length + 1;
-			books.push(book);
-			return book;
-		}
+        function listBooks() {
+            if (arguments.length > 0) {
+                books.sort(function(a, b) {
+                    return a.arguments[0] > b.arguments[0];
+                });
+            } else {
+                books.sort(function(a, b) {
+                    return a.ID - b.ID;
+                });
+            }
 
-		function listCategories() {
-			return categories;
-		}
+            return books;
+        }
 
-		return {
-			books: {
-				list: listBooks,
-				add: addBook
-			},
-			categories: {
-				list: listCategories
-			}
-		};
-	} ());
-	return library;
+        function addBook(book) {
+            book.ID = books.length + 1;
+            var checkBookTitle = book.title.length;
+            var checkBookISBN = book.isbn.length;
+            var booksLength = books.length;
+
+            if (checkBookTitle < 2 || checkBookTitle > 100) {
+                throw new Error();
+            }
+
+            if (typeof book.author !== 'string' || !book.author) {
+                throw new Error();
+            }
+
+            if (checkBookISBN < 10 || checkBookISBN > 13) {
+                throw new Error();
+            }
+
+            for (var i = 0; i < booksLength; i += 1) {
+                if (books[i].title === book.title || books[i].isbn === book.isbn) {
+                    throw new Error();
+                }
+            }
+            if (categories.indexOf(book.category) < 0) {
+                categories.push(book.category);
+            }
+
+            books.push(book);
+            return book;
+        }
+
+        function listCategories() {
+            return categories;
+        }
+
+        return {
+            books: {
+                list: listBooks,
+                add: addBook
+            },
+            categories: {
+                list: listCategories
+            }
+        };
+    }());
+    return library;
 }
 module.exports = solve;
+
+console.log(solve().books.add({
+    title: 'Wars',
+    isbn: 12345678910,
+    author: 'John',
+    category: 'War Category'
+}));
+console.log(solve().books.list());
+console.log(solve().categories.list());
+
+
