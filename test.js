@@ -27,11 +27,27 @@ var f2 = outer('Georgi');
 console.log(f2('Ivanov'));
 
 function Person(name) {
-  var self = this;
-  self.name = name;
-  self.getName = function getPersonName() {
-    return self.name;
-  }
-} 
+    var self = this;
+    self.name = name;
+    self.getName = function getPersonName() {
+        return self.name;
+    }
+}
 var p = Person("Peter");
 console.log(p);
+
+var categories = [];
+var index = categories.length + 1;
+function addCategory(argument) {
+    categories[argument] = {
+        books: [],
+        ID: index
+    };
+}
+addCategory('war');
+addCategory('peace');
+addCategory('metal')
+categories['war'].books.push('wwI');
+categories['war'].books.push('wwII');
+console.log(categories);
+console.log(Object.keys(categories).indexOf('peace'));

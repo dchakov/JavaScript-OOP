@@ -41,24 +41,26 @@ function solve() {
             },
             set: function(firstname) {
                 if (!validateName(firstname)) {
-                    throw new Error('Name is invalid');
+                    throw new Error('Firstname is invalid');
                 }
                 this._firstname = firstname;
                 return this;
             }
         });
+
         Object.defineProperty(Person.prototype, 'lastname', {
             get: function() {
                 return this._lastname;
             },
             set: function(lastname) {
                 if (!validateName(lastname)) {
-                    throw new Error('Name is invalid');
+                    throw new Error('Lastname is invalid');
                 }
                 this._lastname = lastname;
                 return this;
             }
         });
+
         Object.defineProperty(Person.prototype, 'age', {
             get: function() {
                 return this._age;
@@ -85,8 +87,7 @@ function solve() {
         Person.prototype.introduce = function() {
             return 'Hello! My name is ' + this.fullname + ' and I am ' + this.age + '-years-old';
         }
-
-
+        
         return Person;
     }());
     return Person;
