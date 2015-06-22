@@ -33,7 +33,6 @@ function solve() {
                     }else{
                         return [];
                     }
-                    
                 }
                 if (arguments.hasOwnProperty('author')) {
                     books = books.filter(function(index) {
@@ -75,7 +74,7 @@ function solve() {
                     books: []
                 }
             }
-            
+
             categories[book.category].books.push(book);
             books.push(book);
             return book;
