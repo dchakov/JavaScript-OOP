@@ -1,53 +1,30 @@
-function arrJoin(arr, separator) {
-    var i,
-        len,
-        result = '';
+function max (args) {
+	var maxN = args[0],
+	i,
+	len = args.length;
 
-    for (i = 0, len = arr.length; i < len; i += 1) {
-        result += arr[i];
-        if (i !== len - 1) {
-            result += separator;
-        }
-    }
-    return result;
+	for (var i = 1; i < len; i++) {
+		maxN =Math.max(maxN, args[i]);
+	}
+	return maxN;
 }
 
-console.log(arrJoin([1, 1, 2], '-'));
+console.log(max([1,2,3]));
 
-// closure
-function outer(x) {
-    return function inner(y) {
-        return x + '' + y;
-    };
+var printMsg = function () {
+	console.log('hhh');
 }
 
-var f1 = outer(5);
-console.log(f1(6));
-var f2 = outer('Georgi');
-console.log(f2('Ivanov'));
+printMsg();
 
-function Person(name) {
-    var self = this;
-    self.name = name;
-    self.getName = function getPersonName() {
-        return self.name;
-    }
-}
-var p = Person("Peter");
-console.log(p);
+(function () {
+	console.log('Immediate function');
+}());
 
-var categories = [];
-var index = categories.length + 1;
-function addCategory(argument) {
-    categories[argument] = {
-        books: [],
-        ID: index
-    };
+var numbers = [1,2];
+
+function sum (a,b) {
+	return a+b;
 }
-addCategory('war');
-addCategory('peace');
-addCategory('metal')
-categories['war'].books.push('wwI');
-categories['war'].books.push('wwII');
-console.log(categories);
-console.log(Object.keys(categories).indexOf('peace'));
+var obj = sum.call(obj,1,2);
+console.log(obj);
