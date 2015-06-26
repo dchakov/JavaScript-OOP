@@ -27,34 +27,34 @@
  */
 
 
-var domElement = solve();
+// var domElement = solve();
 
-var meta = Object.create(domElement)
-    .init('meta')
-    .addAttribute('charset', 'utf-8');
+// var meta = Object.create(domElement)
+//     .init('meta')
+//     .addAttribute('charset', 'utf-8');
 
-var head = Object.create(domElement)
-    .init('head')
-    .appendChild(meta)
+// var head = Object.create(domElement)
+//     .init('head')
+//     .appendChild(meta)
 
-var div = Object.create(domElement)
-    .init('div')
-    .addAttribute('style', 'font-size: 42px');
+// var div = Object.create(domElement)
+//     .init('div')
+//     .addAttribute('style', 'font-size: 42px');
 
-div.content = 'Hello, world!';
+// div.content = 'Hello, world!';
 
-var body = Object.create(domElement)
-    .init('body')
-    .appendChild(div)
-    .addAttribute('id', 'cuki')
-    .addAttribute('bgcolor', '#012345');
+// var body = Object.create(domElement)
+//     .init('body')
+//     .appendChild(div)
+//     .addAttribute('id', 'cuki')
+//     .addAttribute('bgcolor', '#012345');
 
-var root = Object.create(domElement)
-    .init('html')
-    .appendChild(head)
-    .appendChild(body);
+// var root = Object.create(domElement)
+//     .init('html')
+//     .appendChild(head)
+//     .appendChild(body);
 
-console.log(root.innerHTML);
+// console.log(root.innerHTML);
 
 // Outputs:
 // <html><head><meta charset="utf-8"></meta></head><body bgcolor="#012345" id="cuki"><div style="font-size: 42px">Hello, world!</div></body></html>
@@ -87,7 +87,12 @@ function solve() {
                 return this;
             },
             removeAttribute: function(attribute) {
-                // body...
+                var keysArray = Object.keys(this.attributes);
+                if (keysArray.indexOf(attribute) < 0 || attribute === '') {
+                    throw new Error('Not a valid attribute');
+                }
+                delete this.attributes[attribute];
+                return this;
             },
             get innerHTML() {
                 var result = '',
