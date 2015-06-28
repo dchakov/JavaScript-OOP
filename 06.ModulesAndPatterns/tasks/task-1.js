@@ -77,14 +77,9 @@ function solve() {
             if (this.presentations.length < homeworkID || homeworkID <= 0) {
                 throw new Error('Invalid homeworkID');
             }
-
         },
-        pushExamResults: function(results) {
-
-        },
-        getTopStudents: function() {
-
-        }
+        pushExamResults: function(results) {},
+        getTopStudents: function() {}
     };
 
     Object.defineProperty(Course, 'title', {
