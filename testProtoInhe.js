@@ -28,5 +28,6 @@ var johny = Object.create(dog)
     .init('pinki', 2, 'dogo');
 
 console.log(johny.toString());
+console.dir(johny.toString());
 
 
